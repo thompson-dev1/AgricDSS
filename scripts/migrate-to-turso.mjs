@@ -12,8 +12,9 @@ if (!targetUrl || !authToken) {
 const source = createClient({ url: pathToFileURL(sourcePath).href, intMode: "number" });
 const target = createClient({ url: targetUrl, authToken, intMode: "number" });
 try {
-  const currentTables = await target.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'");
+  const currentTables = await target.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name != 'app_rate_limits'");
   if (currentTables.rows.length) throw new Error("The Turso database is not empty. Choose a new empty database before migrating to avoid overwriting data.");
+  await target.execute("DROP TABLE IF EXISTS app_rate_limits");
   const objects = await source.execute("SELECT type, name, sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' ORDER BY CASE type WHEN 'table' THEN 0 WHEN 'index' THEN 1 WHEN 'trigger' THEN 2 ELSE 3 END");
   const tables = objects.rows.filter((row) => row.type === "table");
   const indexesAndTriggers = objects.rows.filter((row) => row.type === "index" || row.type === "trigger");
