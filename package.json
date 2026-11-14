@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "migrate:turso": "node scripts/migrate-to-turso.mjs",
+    "migrate:turso": "node --env-file-if-exists=.env.local scripts/migrate-to-turso.mjs",
     "migrate:uploads": "node scripts/migrate-uploads-to-blobs.mjs"
   },
   "dependencies": {
