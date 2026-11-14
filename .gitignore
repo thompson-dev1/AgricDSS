@@ -20,6 +20,9 @@
 # uploads & runtime data
 /private_uploads
 *.log
+*.sqlite
+*.sqlite3
+*.db
 
 # macOS
 .DS_Store
