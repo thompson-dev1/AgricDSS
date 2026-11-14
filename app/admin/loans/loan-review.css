@@ -1,0 +1,1 @@
+.loan-review-grid{display:grid;grid-template-columns:200px 1fr;gap:12px 20px;margin:24px 0}.loan-review-grid dt{color:#788079;font-size:13px}.loan-review-grid dd{margin:0;font-weight:650}@media(max-width:550px){.loan-review-grid{grid-template-columns:1fr;gap:5px}.loan-review-grid dd{margin-bottom:12px}}

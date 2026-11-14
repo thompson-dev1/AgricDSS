@@ -1,0 +1,32 @@
+{
+  "name": "agric-dds-next",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "start:standalone": "node .next/standalone/server.js",
+    "migrate:turso": "node scripts/migrate-to-turso.mjs",
+    "migrate:uploads": "node scripts/migrate-uploads-to-blobs.mjs"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "@netlify/blobs": "^11.1.9",
+    "bcryptjs": "^3.0.3",
+    "next": "^16.4.6",
+    "nodemailer": "^10.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
+  }
+}

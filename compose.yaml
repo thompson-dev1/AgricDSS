@@ -1,0 +1,53 @@
+services:
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+    init: true
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
+    env_file:
+      - .env.deploy
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+      AGRIC_DB_PATH: /data/database.sqlite
+    expose:
+      - "3000"
+    volumes:
+      - "${AGRIC_DATA_DIR:?Set AGRIC_DATA_DIR in .env.deploy}:/data"
+      - "${AGRIC_DATA_DIR:?Set AGRIC_DATA_DIR in .env.deploy}/uploads:/app/public/uploads"
+      - "${AGRIC_DATA_DIR:?Set AGRIC_DATA_DIR in .env.deploy}/private_uploads:/app/private_uploads"
+      - "${AGRIC_DATA_DIR:?Set AGRIC_DATA_DIR in .env.deploy}/next-cache:/app/.next/cache"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/health').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN to a public hostname}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-data:
+  caddy-config:

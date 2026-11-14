@@ -1,0 +1,4 @@
+import { getMarketPriceRows } from "@/app/lib/data/reports";
+import "../farmer/products/products.css";
+export const metadata={title:"Market Prices | AGRIC DSS"};
+export default async function PricesPage(){const prices=await getMarketPriceRows();return <main className="inventory-page"><div className="inventory-wrap"><header className="inventory-heading"><div><p>AGRIC DSS · MARKET INFORMATION</p><h1>Market Price Information</h1><span>Current reference prices by crop and market.</span></div><a href="/marketplace">Browse products</a></header><section className="inventory-stock-card"><div className="inventory-table-scroll"><table><thead><tr><th>Crop</th><th>Market</th><th>Price (GHS)</th></tr></thead><tbody>{prices.map((p)=><tr key={p.id}><td>{p.crop_name}</td><td>{p.market_name}</td><td>{Number(p.price).toFixed(2)}</td></tr>)}</tbody></table></div>{!prices.length&&<p>No market price information is available.</p>}</section></div></main>}

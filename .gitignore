@@ -1,0 +1,26 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# local environment files & secrets
+.env*.local
+.env.deploy
+
+# uploads & runtime data
+/private_uploads
+*.log
+
+# macOS
+.DS_Store
+*.pem

@@ -1,0 +1,267 @@
+/* Shared small-screen safeguards across public, buyer, farmer, and admin pages. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
+
+main,
+section,
+article,
+form,
+fieldset,
+.card,
+.row {
+  min-width: 0;
+}
+
+img,
+video,
+svg,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+textarea,
+pre,
+code,
+td,
+th,
+p,
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: anywhere;
+}
+
+[class*="table-scroll"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1100px) {
+  .nav-toggle {
+    display: block;
+    min-width: 42px;
+    min-height: 42px;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-height: calc(100dvh - 64px);
+    padding: 8px 0 12px;
+    gap: 2px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 11px 14px;
+  }
+
+  .nav-search {
+    width: calc(100% - 24px);
+    margin: 8px 12px;
+  }
+
+  .nav-search input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .nav-user {
+    width: 100%;
+    margin: 4px 0 0;
+    padding: 11px 14px;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: min(88svh, 760px);
+    padding-top: 48px;
+    padding-bottom: 40px;
+    background-attachment: scroll;
+  }
+
+  .hero-search > i {
+    padding: 4px 4px 8px;
+  }
+
+  .hero-search input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-search button,
+  .booking-card button,
+  .profile-save,
+  .cart-checkout {
+    min-height: 44px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .booking-card {
+    padding: clamp(16px, 5vw, 25px);
+  }
+
+  .messages-page {
+    min-height: calc(100dvh - 60px);
+  }
+
+  .chat-container {
+    height: calc(100dvh - 60px);
+  }
+
+  .chat-form button {
+    min-width: 48px;
+    min-height: 44px;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-container {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .nav-brand {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+
+  .login-box {
+    margin-top: 28px;
+  }
+
+  .login-page .container {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .service-categories {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .service-categories a {
+    flex: 0 0 auto;
+  }
+
+  .notification-top {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .booking-confirm-card {
+    padding: 24px 18px;
+  }
+
+  .booking-confirm-card > div {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-confirm-card > div b {
+    text-align: left;
+  }
+
+  .product-detail-action {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .product-detail-action button {
+    min-height: 44px;
+  }
+
+  .admin-add-product form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .price-add-card form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .price-add-card label {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .market-container {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inventory-field-row,
+  .buy-request-row {
+    grid-template-columns: minmax(0, 1fr);
+    flex-direction: column;
+  }
+
+  .admin-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .chat-input-area {
+    padding: 9px;
+  }
+
+  .chat-form {
+    gap: 7px;
+  }
+
+  .chat-form input {
+    padding: 11px 13px;
+  }
+}

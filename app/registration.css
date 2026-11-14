@@ -1,0 +1,47 @@
+.registration-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.reg-card, .verify-card {
+  background: white;
+  border-radius: 16px;
+  padding: 35px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0,0,0,.1);
+}
+.reg-card { max-width: 480px; }
+.verify-card { max-width: 440px; text-align: center; }
+.reg-header { text-align: center; margin-bottom: 25px; }
+.reg-header .icon, .verify-icon {
+  width: 60px; height: 60px; background: linear-gradient(135deg,#2e7d32,#43a047);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px; color: white; font-size: 24px;
+}
+.verify-icon { width: 70px; height: 70px; background: linear-gradient(135deg,#ff8f00,#ffa726); margin-bottom: 18px; }
+.reg-header h1, .verify-card h1 { font-size: 22px; font-weight: 700; color: #1b5e20; margin: 0; }
+.reg-header p { color: #888; font-size: 13px; margin: 5px 0 0; }
+.reg-card .form-control { padding: 12px 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 14px; background: #fafafa; transition: .2s; }
+.reg-card .form-control:focus { border-color: #43a047; box-shadow: 0 0 0 3px rgba(67,160,71,.1); background: white; }
+.reg-card .form-label { font-weight: 600; font-size: 13px; color: #555; margin-bottom: 6px; }
+.btn-register { background: linear-gradient(135deg,#2e7d32,#43a047); color: white; border: 0; padding: 13px; width: 100%; border-radius: 8px; font-weight: 600; font-size: 16px; margin-top: 10px; transition: .2s; cursor: pointer; }
+.btn-register:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(46,125,50,.3); }
+.alert-msg { padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; font-weight: 500; text-align: center; }
+.alert-msg.error { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+.alert-msg.success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
+.registration-hint { color: #888; font-size: 11px; }
+.login-link { text-align: center; margin-top: 18px; font-size: 13px; color: #888; }
+.login-link a, .resend-button { color: #2e7d32; font-weight: 600; text-decoration: none; }
+.login-link a:hover, .resend-button:hover { text-decoration: underline; }
+.verify-card > p { color: #666; margin-top: 15px; }
+.verify-card .verify-expiry { font-size: 13px; color: #888; margin-top: -8px; }
+.verification-code { width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 14px; text-align: center; font-size: 26px; letter-spacing: 8px; margin: 10px 0; }
+.resend-form { margin-top: 12px; }
+.resend-button { background: transparent; border: 0; padding: 8px; cursor: pointer; }
+
+@media (max-width: 480px) { .reg-card, .verify-card { padding: 26px 22px; } }
